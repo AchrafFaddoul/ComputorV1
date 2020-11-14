@@ -1,3 +1,7 @@
-from parser import get_input
+from parser import parser
 
-get_input()
+def main():
+    parser()
+
+if __name__ == "__main__":
+    main()
