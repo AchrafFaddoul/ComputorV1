@@ -38,6 +38,7 @@ def tokenizer(expression):
     return tokens
 
 def parser():
+    tokens = []
     equation = get_input()
     expressions = split_polynomial(equation)
     if not expressions:
@@ -46,7 +47,7 @@ def parser():
         exit("this expression are not an equation")
     if not scanner(expressions[1]):
         exit("this expression are not an equation")
-    tokenizer(expressions[0])
-    tokenizer(expressions[1])
-
+    tokens.append(tokenizer(expressions[0]))
+    tokens.append(tokenizer(expressions[1]))
+    print(tokens)
     print("done")
