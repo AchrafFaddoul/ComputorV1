@@ -26,13 +26,26 @@ def get_input():
         exit("bad input")
     return sys.argv[1];
 
-def tokenizer(expressions):
+def tokenizer(expression):
+    subs = []
+    j = 0
+    for i in range(0, len(expression)):
+        print(expression[i], i)
+        if expression[i] == '+' or expression[i] == '-':
+            subs.append(expression[j:i])
+            j = i + 1
+    subs.append(expression[j:i+1])
+    print(subs, i, j)
+
+
+    '''
     print(expressions)
     left_exp = []
     right_exp = []
     equation = {'left_expr': left_exp, 'right_expr': right_exp}
     elm = {'coeff': 0, 'exp': 0}
     print(elm['coeff'], "hello world")
+    '''
 
 def parser():
     equation = get_input()
@@ -43,5 +56,5 @@ def parser():
         exit("this expression are not an equation")
     if not scanner(expressions[1]):
         exit("this expression are not an equation")
-    tokenizer(expressions)
+    tokenizer(expressions[0])
     print("done")
