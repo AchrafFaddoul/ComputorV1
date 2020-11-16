@@ -2,7 +2,6 @@ import sys
 
 def is_equation(expressions):
     for expression in expressions:
-        print(expression)
         for c in expression:
             if (c.isalpha() or c.isdigit() 
                 or c == '=' or c == '+' or c == '-' 
@@ -40,6 +39,21 @@ def tokenizer(expressions):
         equation.append(tokens)
     return equation
 
+def coeff_expo_parser(exprs):
+    equation = [[],[]]
+    i = 0
+    for expr in exprs:
+        for token in expr:
+            lst = token.split(sep='*')
+            equation[i].append({
+                'coeff': lst[0],
+                'expo': lst[1]
+            })
+        i = i + 1
+            
+    return equation
+
+# if sub-string in string[-3 -1]
 def parser():
     tokens = []
     equation = get_input()
@@ -48,6 +62,7 @@ def parser():
         exit("this expression are not an equation")
     if not scanner(expressions):
         exit("this expression are not an equation")
-    tokens = tokenizer(expressions)
-    print(tokens)
+    exprs = tokenizer(expressions)
+    equation = coeff_expo_parser(exprs)
+    print(equation[0], '\n', equation[1])
     print("done")
