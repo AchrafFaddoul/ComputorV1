@@ -27,15 +27,18 @@ def get_input():
         exit("bad input")
     return sys.argv[1];
 
-def tokenizer(expression):
-    tokens = []
-    j = 0
-    for i in range(0, len(expression)):
-        if expression[i] == '+' or expression[i] == '-':
-            tokens.append(expression[j:i])
-            j = i + 1
-    tokens.append(expression[j:i+1])
-    return tokens
+def tokenizer(expressions):
+    equation = []
+    for expression in expressions:
+        tokens = []
+        j = 0
+        for i in range(0, len(expression)):
+            if expression[i] == '+' or expression[i] == '-':
+                tokens.append(expression[j:i])
+                j = i
+        tokens.append(expression[j:i+1])
+        equation.append(tokens)
+    return equation
 
 def parser():
     tokens = []
@@ -45,7 +48,6 @@ def parser():
         exit("this expression are not an equation")
     if not scanner(expressions):
         exit("this expression are not an equation")
-    tokens.append(tokenizer(expressions[0]))
-    tokens.append(tokenizer(expressions[1]))
+    tokens = tokenizer(expressions)
     print(tokens)
     print("done")
