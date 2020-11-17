@@ -58,16 +58,24 @@ def coeff_expo_parser(expressions):
 def is_coeff(coeff):
     try:
         coeff = float(coeff)
+    #to write in an other clean way
     except:
-        return False
+        exit('coefficient not properly formated')
     return coeff
+
+def is_exponent(expo):
+    exponents = ['X^0', 'X^1', 'X^2']
+    if not expo in exponents:
+        exit('exponent not properly formated')
+    expo = expo[-1:]
+    return expo
+
 
 def semantic_analyser(equation):
     for expression in equation:
         for elm in expression:
             elm['coeff'] = is_coeff(elm['coeff'])
-            if not elm['coeff']:
-                return False
+            elm['expo'] = is_exponent(elm['expo'])
             
 
 # if sub-string in string[-3 -1]
@@ -82,7 +90,7 @@ def parser():
     equation = coeff_expo_parser(expressions)
     if not equation:
         exit("this expression are not an equation")
-    print(equation)
+    print(equation, '\n\n\n\n\n')
     semantic_analyser(equation)
     print(equation)
     print("done")
