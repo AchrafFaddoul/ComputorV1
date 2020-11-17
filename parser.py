@@ -39,19 +39,36 @@ def tokenizer(expressions):
         equation.append(tokens)
     return equation
 
-def coeff_expo_parser(exprs):
+def coeff_expo_parser(expressions):
+    exprs = tokenizer(expressions)
     equation = [[],[]]
     i = 0
     for expr in exprs:
         for token in expr:
             lst = token.split(sep='*')
+            if len(lst) != 2:
+                return False
             equation[i].append({
                 'coeff': lst[0],
                 'expo': lst[1]
             })
         i = i + 1
-            
     return equation
+
+def is_coeff(coeff):
+    try:
+        coeff = float(coeff)
+    except:
+        return False
+    return coeff
+
+def semantic_analyser(equation):
+    for expression in equation:
+        for elm in expression:
+            elm['coeff'] = is_coeff(elm['coeff'])
+            if not elm['coeff']:
+                return False
+            
 
 # if sub-string in string[-3 -1]
 def parser():
@@ -62,7 +79,10 @@ def parser():
         exit("this expression are not an equation")
     if not scanner(expressions):
         exit("this expression are not an equation")
-    exprs = tokenizer(expressions)
-    equation = coeff_expo_parser(exprs)
-    print(equation[0], '\n', equation[1])
+    equation = coeff_expo_parser(expressions)
+    if not equation:
+        exit("this expression are not an equation")
+    print(equation)
+    semantic_analyser(equation)
+    print(equation)
     print("done")
