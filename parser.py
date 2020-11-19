@@ -82,12 +82,16 @@ def equation_simplifier(equation):
     for elm in equation[1]:
         elm['coeff'] = elm['coeff'] * -1
         equation[0].append(elm)
-        equation[1].pop(i)
+        if len(equation[1]) > 0:
+            equation[1].pop(i)
         i += 1
-    print('bef', equation[0])
     equation[0] = sorted(equation[0], key=lambda k: k['expo'], reverse=True)
-    print('aft', equation[0])
- 
+    for i in equation[0]:
+        for j in equation[0]:
+            if j['expo'] == i['expo'] and equation[0].index(i) != equation[0].index(j):
+                i['coeff'] += j['coeff']
+                if len(equation[0]) > 0:
+                    equation[0].pop(equation[0].index(j))
 
 def parser():
     tokens = []
