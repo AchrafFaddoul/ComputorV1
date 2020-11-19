@@ -76,9 +76,7 @@ def semantic_analyser(equation):
         for elm in expression:
             elm['coeff'] = is_coeff(elm['coeff'])
             elm['expo'] = is_exponent(elm['expo'])
-            
 
-# if sub-string in string[-3 -1]
 def parser():
     tokens = []
     equation = get_input()
