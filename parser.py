@@ -92,6 +92,8 @@ def equation_simplifier(equation):
                 i['coeff'] += j['coeff']
                 if len(equation[0]) > 0:
                     equation[0].pop(equation[0].index(j))
+    coeff_lst = [elm['coeff'] for elm in equation[0]]
+    
 
 def parser():
     tokens = []
