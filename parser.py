@@ -1,4 +1,5 @@
 import sys
+from tools import find_gcd
 
 def is_equation(expressions):
     for expression in expressions:
@@ -93,7 +94,10 @@ def equation_simplifier(equation):
                 if len(equation[0]) > 0:
                     equation[0].pop(equation[0].index(j))
     coeff_lst = [elm['coeff'] for elm in equation[0]]
-    
+    gcd = find_gcd(coeff_lst)
+    if (gcd > 1):
+        for elm in equation[0]:
+            elm['coeff'] = elm['coeff'] / gcd
 
 def parser():
     tokens = []
@@ -106,7 +110,7 @@ def parser():
     equation = coeff_expo_parser(expressions)
     if not equation:
         exit("this expression isn't an equation")
-    print(equation, '\n\n\n\n\n')
+    print(equation, '\n')
     semantic_analyser(equation)
     equation_simplifier(equation)
     print(equation)

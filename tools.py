@@ -5,8 +5,9 @@ def gcd (a,b):
          return gcd (b, a % b)
 
 def find_gcd(list):
-    A = [12, 24, 27, 30, 33]
     res = list[0]
     for elm in list[1:]:
+        if (elm % 1):
+            return False
         res = gcd(res , elm)
     return res
