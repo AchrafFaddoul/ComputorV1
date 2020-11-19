@@ -67,7 +67,7 @@ def is_exponent(expo):
     exponents = ['X^0', 'X^1', 'X^2']
     if not expo in exponents:
         exit('exponent not properly formated')
-    expo = expo[-1:]
+    expo = int(expo[-1:])
     return expo
 
 
@@ -76,6 +76,14 @@ def semantic_analyser(equation):
         for elm in expression:
             elm['coeff'] = is_coeff(elm['coeff'])
             elm['expo'] = is_exponent(elm['expo'])
+
+def equation_simplifier(equation):
+    i = 0
+    for elm in equation[1]:
+        elm['coeff'] = elm['coeff'] * -1
+        equation[0].append(elm)
+        equation[1].pop(i)
+        i += 1
 
 def parser():
     tokens = []
@@ -90,5 +98,6 @@ def parser():
         exit("this expression isn't an equation")
     print(equation, '\n\n\n\n\n')
     semantic_analyser(equation)
+    equation_simplifier(equation)
     print(equation)
     print("done")
