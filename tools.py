@@ -3,9 +3,10 @@ def gcd (a,b):
         return a
     else:
          return gcd (b, a % b)
-A = [12, 24, 27, 30, 33]
-res = A[0]
-for c in A[1:]:
-    res = gcd(res , c)
-    print('inside', res)
-print(res)
+
+def find_gcd(list):
+    A = [12, 24, 27, 30, 33]
+    res = list[0]
+    for elm in list[1:]:
+        res = gcd(res , elm)
+    return res
