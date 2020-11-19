@@ -84,6 +84,10 @@ def equation_simplifier(equation):
         equation[0].append(elm)
         equation[1].pop(i)
         i += 1
+    print('bef', equation[0])
+    equation[0] = sorted(equation[0], key=lambda k: k['expo'], reverse=True)
+    print('aft', equation[0])
+ 
 
 def parser():
     tokens = []
