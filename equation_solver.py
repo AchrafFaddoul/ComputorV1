@@ -7,9 +7,9 @@ def coeff_modifier(coeff, deg):
         coeff *= -1
         string = '- ' if deg != 0 else '-'
     else:
-        string = deg != 0 if '+ ' else ''
+        string = '+ ' if deg != 0 else ''
     try:
-        string += str(int(coeff)) if coeff % 10 else str(coeff)
+        string += str(int(coeff)) if not coeff % 1 else str(coeff)
     except:
         exit('bad input')
     string += ' '
@@ -33,5 +33,5 @@ def reduced_form_generator(equation):
 
 def equation_solver(equation):
     deg = deg_extractor(equation)
-    print(equation)
+    #print(equation)
     reduced_form_generator(equation)
