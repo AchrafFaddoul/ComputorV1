@@ -71,7 +71,6 @@ def is_exponent(expo):
     expo = int(expo[-1:])
     return expo
 
-
 def semantic_analyser(equation):
     for expression in equation:
         for elm in expression:
@@ -109,7 +108,6 @@ def parser():
     equation = coeff_expo_parser(expressions)
     if not equation:
         exit("this expression isn't an equation")
-    print(equation, '\n')
     semantic_analyser(equation)
     equation_simplifier(equation)
     print(equation)
