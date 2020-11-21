@@ -20,4 +20,7 @@ def equation_simplifier(equation):
     if (gcd > 1):
         for elm in equation[0]:
             elm['coeff'] = elm['coeff'] / gcd
+    if len(equation) == 2:
+        equation.pop(1)
+    print(equation)
     return equation
