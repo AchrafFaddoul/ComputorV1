@@ -25,7 +25,7 @@ def split_polynomial(equation):
 def get_input():
     if len(sys.argv) != 2:
         exit("bad input")
-    return sys.argv[1];
+    return sys.argv[1]
 
 def tokenizer(expressions):
     equation = []
@@ -100,7 +100,6 @@ def equation_simplifier(equation):
             elm['coeff'] = elm['coeff'] / gcd
 
 def parser():
-    tokens = []
     equation = get_input()
     expressions = split_polynomial(equation)
     if not expressions:
