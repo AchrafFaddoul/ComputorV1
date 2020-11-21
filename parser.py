@@ -77,26 +77,7 @@ def semantic_analyser(equation):
             elm['coeff'] = is_coeff(elm['coeff'])
             elm['expo'] = is_exponent(elm['expo'])
 
-def equation_simplifier(equation):
-    i = 0
-    for elm in equation[1]:
-        elm['coeff'] = elm['coeff'] * -1
-        equation[0].append(elm)
-        if len(equation[1]) > 0:
-            equation[1].pop(i)
-        i += 1
-    equation[0] = sorted(equation[0], key=lambda k: k['expo'], reverse=True)
-    for i in equation[0]:
-        for j in equation[0]:
-            if j['expo'] == i['expo'] and equation[0].index(i) != equation[0].index(j):
-                i['coeff'] += j['coeff']
-                if len(equation[0]) > 0:
-                    equation[0].pop(equation[0].index(j))
-    coeff_lst = [elm['coeff'] for elm in equation[0]]
-    gcd = find_gcd(coeff_lst)
-    if (gcd > 1):
-        for elm in equation[0]:
-            elm['coeff'] = elm['coeff'] / gcd
+
 
 def parser():
     equation = get_input()
@@ -109,6 +90,4 @@ def parser():
     if not equation:
         exit("this expression isn't an equation")
     semantic_analyser(equation)
-    equation_simplifier(equation)
-    print(equation)
-    print("done")
+    return equation
