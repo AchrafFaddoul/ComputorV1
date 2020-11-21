@@ -12,18 +12,23 @@ def coeff_modifier(coeff, deg):
     else:
         if deg != 0:
             string = '+ '
-        else:
-            string = '+'
     string += str(int(coeff)) if coeff % 10 else str(coeff)
     string += ' '
     return string
 
+def exponent_modifier(expo):
+    string = '* X^'
+    string += str(expo) + ' '
+    return string
 
 def reduced_form_generator(equation):
     reduced_polynomial = ''
     equation_rev = [elm for elm in reversed(equation)]
     for elm in equation_rev:
         reduced_polynomial += coeff_modifier(elm['coeff'], elm['expo'])
+        reduced_polynomial += exponent_modifier(elm['expo'])
+    reduced_polynomial += '= 0'
+    reduced_polynomial = 'Reduced form: ' + reduced_polynomial
     print(reduced_polynomial)
         
 
