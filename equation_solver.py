@@ -5,14 +5,13 @@ def coeff_modifier(coeff, deg):
     string = ''
     if coeff < 0:
         coeff *= -1
-        if deg != 0:
-            string = '- '
-        else:
-            string = '-'
+        string = '- ' if deg != 0 else '-'
     else:
-        if deg != 0:
-            string = '+ '
-    string += str(int(coeff)) if coeff % 10 else str(coeff)
+        string = deg != 0 if '+ ' else ''
+    try:
+        string += str(int(coeff)) if coeff % 10 else str(coeff)
+    except:
+        exit('bad input')
     string += ' '
     return string
 
