@@ -60,7 +60,6 @@ def coeff_expo_parser(expressions):
 def is_coeff(coeff):
     try:
         coeff = float(coeff)
-    #to write in an other clean way
     except:
         exit('coefficient not properly formated')
     return coeff
