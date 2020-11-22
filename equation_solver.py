@@ -1,4 +1,6 @@
 def deg_extractor(equation):
+    if not len(equation):
+        return 0
     return equation[0]['expo']
 
 def coeff_modifier(coeff, deg, min_deg):
@@ -32,18 +34,19 @@ def reduced_form_generator(equation):
     return reduced_polynomial
         
 def discriminant_calculator(equation):
-    print(equation)
+    #print(equation)
+    True
 
 def equation_solver(equation):
-    print('equa', equation)
     deg = deg_extractor(equation)
     if deg == 0:
-        msg = 'equation unsolvable' if equation[0]['coeff'] != 0 else 'all real numbers are a solution' 
+        msg = 'all real numbers are a solution'  if ( not len(equation) or equation[0]['coeff'] == 0) else 'equation unsolvable'
         exit(msg)
     reduced_polynomial = reduced_form_generator(equation)
     print(reduced_polynomial)
     print('Polynomial degree: {}'.format(deg))
     if deg == 1:
-        print(equation)
+        #print(equation)
+        True
         
-    #discriminant_calculator(equation)
+    discriminant_calculator(equation)
