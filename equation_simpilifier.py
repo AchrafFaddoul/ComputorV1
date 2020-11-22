@@ -8,6 +8,7 @@ def equation_simplifier(equation):
         i += 1
     equation[0] = sorted(equation[0], key=lambda k: k['expo'], reverse=True)
     equation[0] = [elm for elm in equation[0] if elm['coeff']]
+    print(equation[0])
     for i in equation[0]:
         for j in equation[0]:
             if j['expo'] == i['expo'] and equation[0].index(i) != equation[0].index(j):
@@ -19,6 +20,7 @@ def equation_simplifier(equation):
     if (gcd > 1):
         for elm in equation[0]:
             elm['coeff'] = elm['coeff'] / gcd
+    equation[0] = [elm for elm in equation[0] if elm['coeff']]
     if len(equation) == 2:
         equation.pop(1)
         equation = equation[0]

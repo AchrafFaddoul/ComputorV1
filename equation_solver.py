@@ -35,7 +35,6 @@ def discriminant_calculator(equation):
     print(equation)
 
 def equation_solver(equation):
-    print(equation)
     deg = deg_extractor(equation)
     if deg == 0:
         msg = 'equation unsolvable' if equation[0]['coeff'] != 0 else 'all real numbers are a solution' 
@@ -46,4 +45,4 @@ def equation_solver(equation):
     if deg == 1:
         print(equation)
         
-    discriminant_calculator(equation)
+    #discriminant_calculator(equation)
