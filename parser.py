@@ -29,6 +29,7 @@ def get_input():
 
 def tokenizer(expressions):
     equation = []
+    print('expr 1', expressions[1])
     for expression in expressions:
         tokens = []
         j = 0
@@ -41,13 +42,30 @@ def tokenizer(expressions):
         equation.append(tokens)
     return equation
 
+def negative_exponent_handler(exprs):
+    for expr in exprs:
+        for i in range(0, len(expr)):
+            print(expr[i])
+            if expr[i][0] == '-' and expr[i][1:].isdigit():
+                if i > 0:
+                    expr[i - 1] += expr[i]
+                    print('bef and current',expr[i -1], expr[i])
+        expr = [elm for elm in expr if not (elm[0] == '-' and elm[1:].isdigit())]
+        print('final', expr)
+    return exprs
+
 def coeff_expo_parser(expressions):
     exprs = tokenizer(expressions)
+    exprs = negative_exponent_handler(exprs)
+    print('expr', exprs)
     equation = [[],[]]
     i = 0
     for expr in exprs:
+        #print('expr n',expr)
         for token in expr:
+            #print('token',token)
             lst = token.split(sep='*')
+            #print('<-lst->',lst)
             if len(lst) != 2:
                 return False
             equation[i].append({
@@ -55,6 +73,7 @@ def coeff_expo_parser(expressions):
                 'expo': lst[1]
             })
         i = i + 1
+        #print(equation)
     return equation
 
 def is_coeff(coeff):
@@ -65,10 +84,13 @@ def is_coeff(coeff):
     return coeff
 
 def is_exponent(expo):
-    exponents = ['X^0', 'X^1', 'X^2']
-    if not expo in exponents:
+    unk = ['X^']
+    #print(expo[:2])
+    if not expo[:2] in unk:
+        #print(expo)
         exit('exponent not properly formated')
-    expo = int(expo[-1:])
+    expo = int(expo[2:])
+    print(expo)
     return expo
 
 def semantic_analyser(equation):
