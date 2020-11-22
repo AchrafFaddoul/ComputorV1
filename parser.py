@@ -34,7 +34,8 @@ def tokenizer(expressions):
         j = 0
         for i in range(0, len(expression)):
             if expression[i] == '+' or expression[i] == '-':
-                tokens.append(expression[j:i])
+                if len(expression[j:i]):
+                    tokens.append(expression[j:i])
                 j = i
         tokens.append(expression[j:i+1])
         equation.append(tokens)
@@ -85,9 +86,9 @@ def parser():
     if not expressions:
         exit("this expression isn't an equation")
     if not scanner(expressions):
-        exit("this expression isn't an equation")
+        exit("1 this expression isn't an equation")
     equation = coeff_expo_parser(expressions)
     if not equation:
-        exit("this expression isn't an equation")
+        exit("2 this expression isn't an equation")
     semantic_analyser(equation)
     return equation

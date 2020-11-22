@@ -28,10 +28,20 @@ def reduced_form_generator(equation):
         reduced_polynomial += exponent_modifier(elm['expo'])
     reduced_polynomial += '= 0'
     reduced_polynomial = 'Reduced form: ' + reduced_polynomial
-    print(reduced_polynomial)
+    return reduced_polynomial
         
+def discriminant_calculator(equation):
+    print(equation)
 
 def equation_solver(equation):
     deg = deg_extractor(equation)
-    #print(equation)
-    reduced_form_generator(equation)
+    if deg == 0:
+        msg = 'equation unsolvable' if equation[0]['coeff'] != 0 else 'all real numbers are a solution' 
+        exit(msg)
+    reduced_polynomial = reduced_form_generator(equation)
+    print(reduced_polynomial)
+    print('Polynomial degree: {}'.format(deg))
+    #if deg == 1:
+    #    print(equation)
+        
+    #discriminant_calculator(equation)

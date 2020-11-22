@@ -22,5 +22,6 @@ def equation_simplifier(equation):
             elm['coeff'] = elm['coeff'] / gcd
     if len(equation) == 2:
         equation.pop(1)
-        equation = equation[0]
+        equation = equation[0]    
+    print(equation)
     return equation
