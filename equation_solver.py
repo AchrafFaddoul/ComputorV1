@@ -37,11 +37,15 @@ def discriminant_calculator(equation):
     #print(equation)
     True
 
+def linear_polynomial_solver(equation):
+    True
+
 def equation_solver(equation):
     deg = deg_extractor(equation)
     if deg == 0:
+        null_deg_msg = 'Polynomial degree: 0'
         msg = 'all real numbers are a solution'  if ( not len(equation) or equation[0]['coeff'] == 0) else 'equation unsolvable'
-        exit(msg)
+        exit('{}\n{}'.format(null_deg_msg, msg))
     reduced_polynomial = reduced_form_generator(equation)
     print(reduced_polynomial)
     print('Polynomial degree: {}'.format(deg))
