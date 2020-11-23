@@ -34,10 +34,11 @@ def reduced_form_generator(equation):
     return reduced_polynomial
         
 def discriminant_calculator(equation):
-    #print(equation)
+    print(equation)
     True
 
 def linear_polynomial_solver(equation):
+    print(equation)
     True
 
 def equation_solver(equation):
@@ -49,8 +50,10 @@ def equation_solver(equation):
     reduced_polynomial = reduced_form_generator(equation)
     print(reduced_polynomial)
     print('Polynomial degree: {}'.format(deg))
+    if equation[-1]['expo'] < 1:
+        exit('The polynomial degree is stricly smaller than 0, I can\'t solve it')
     if deg == 1:
-        #print(equation)
+        linear_polynomial_solver(equation)
         True
         
-    discriminant_calculator(equation)
+    #discriminant_calculator(equation)
