@@ -76,5 +76,5 @@ def equation_solver(equation):
     if deg == 1:
         if not linear_polynomial_solver(equation):
             exit('something went wrong during solution calculation')
-
+        exit(0)
     # discriminant_calculator(equation)
