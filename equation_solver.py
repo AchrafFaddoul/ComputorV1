@@ -68,8 +68,13 @@ def linear_polynomial_solver(equation):
 
 
 def complex_solution_formator(delta_sqrt, re, im):
-    solution =
-    True
+    sign1 = ' + ' if (im > 0) else ' - '
+    sign2 = ' - ' if (im > 0) else ' + '
+    if im < 0:
+        im *= -1
+    x1 = f"{str(round(re, 6))}{sign1}{str(round(im, 6))}i"
+    x2 = f"{str(round(re, 6))}{sign2}{str(round(im, 6))}i"
+    solution = {'delta': -1, 'x1': x1, 'x2': x2}
     return solution
 
 
@@ -78,7 +83,8 @@ def quadratic_polynomial_solver(solution_data):
         delta_sqrt = solution_data['delta'] ** 0.5
         x1 = (- solution_data['b'] + delta_sqrt) / (2 * solution_data['a'])
         x2 = (- solution_data['b'] - delta_sqrt) / (2 * solution_data['a'])
-        solution = {'delta': 1, 'x1': str(x1), 'x2': str(x2)}
+        solution = {'delta': 1, 'x1': str(
+            round(x1, 6)), 'x2': str(round(x2, 6))}
         return solution
     elif not solution_data['delta']:
         x = (- solution_data['b']) / (2 * solution_data['a'])
@@ -89,6 +95,7 @@ def quadratic_polynomial_solver(solution_data):
         re = - solution_data['b'] / (2 * solution_data['a'])
         im = delta_sqrt / (2 * solution_data['a'])
         solution = complex_solution_formator(delta_sqrt, re, im)
+    return solution
 
 
 def equation_solver(equation):
@@ -111,4 +118,5 @@ def equation_solver(equation):
             exit('something went wrong during solution calculation')
         exit(0)
     solution_data = discriminant_calculator(equation)
-    quadratic_polynomial_solver(solution_data)
+    solution = quadratic_polynomial_solver(solution_data)
+    print(solution)
