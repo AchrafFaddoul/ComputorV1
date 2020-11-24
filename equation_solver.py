@@ -44,8 +44,18 @@ def discriminant_calculator(equation):
 
 
 def linear_polynomial_solver(equation):
-    # print(equation)
-    True
+    sol = 0
+    equa_len = len(equation)
+    if not equa_len or equa_len > 2:
+        return (False)
+    sol_msg = 'The solution is:\n'
+    if equa_len == 2:
+        sol = (equation[1]['coeff'] * -1) / equation[0]['coeff']
+        sol_msg += str(sol)
+    elif equa_len == 1:
+        sol_msg += '0'
+    print(sol_msg)
+    return True
 
 
 def equation_solver(equation):
@@ -64,7 +74,7 @@ def equation_solver(equation):
     elif equation[0]['expo'] > 2:
         exit('The polynomial degree is stricly greater than 2, I can\'t solve it')
     if deg == 1:
-        linear_polynomial_solver(equation)
-        True
+        if not linear_polynomial_solver(equation):
+            exit('something went wrong during solution calculation')
 
     # discriminant_calculator(equation)
