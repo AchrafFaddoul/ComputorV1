@@ -40,7 +40,14 @@ def reduced_form_generator(equation):
 
 def discriminant_calculator(equation):
     print(equation)
-    True
+    delta_coeffs = [0, 0, 0]
+    i = 0
+    for elm in equation:
+        delta_coeffs[i] = elm['coeff']
+        i += 1
+    print(delta_coeffs)
+    delta = delta_coeffs[1] ** 2 - (4 * delta_coeffs[0] * delta_coeffs[2])
+    return delta
 
 
 def linear_polynomial_solver(equation):
@@ -77,4 +84,4 @@ def equation_solver(equation):
         if not linear_polynomial_solver(equation):
             exit('something went wrong during solution calculation')
         exit(0)
-    # discriminant_calculator(equation)
+    discriminant_calculator(equation)
