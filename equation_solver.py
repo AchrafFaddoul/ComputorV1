@@ -47,7 +47,9 @@ def discriminant_calculator(equation):
         i += 1
     print(delta_coeffs)
     delta = delta_coeffs[1] ** 2 - (4 * delta_coeffs[0] * delta_coeffs[2])
-    return delta
+    solution_data = {'a': delta_coeffs[0], 'b': delta_coeffs[1],
+                     'c': delta_coeffs[2], 'delta': delta}
+    return solution_data
 
 
 def linear_polynomial_solver(equation):
@@ -63,6 +65,9 @@ def linear_polynomial_solver(equation):
         sol_msg += '0'
     print(sol_msg)
     return True
+
+
+def quadratic_polynomial_solver(eq)
 
 
 def equation_solver(equation):
