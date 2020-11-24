@@ -1,23 +1,26 @@
 import sys
 from tools import find_gcd
 
+
 def is_equation(expressions):
     for expression in expressions:
         for c in expression:
-            if (c.isalpha() or c.isdigit() 
-                or c == '=' or c == '+' or c == '-' 
+            if (c.isalpha() or c.isdigit()
+                or c == '=' or c == '+' or c == '-'
                     or c == '*' or c == '^' or c == '.'):
                 continue
             else:
                 return False
     return True
 
+
 def scanner(expressions):
     return is_equation(expressions)
 
+
 def split_polynomial(equation):
     expressions = equation.replace(" ", "").split(sep='=')
-    if len(expressions) != 2 or  len(expressions[0]) == 0 or len(expressions[1]) == 0:
+    if len(expressions) != 2 or len(expressions[0]) == 0 or len(expressions[1]) == 0:
         return False
     return expressions
 
@@ -26,6 +29,7 @@ def get_input():
     if len(sys.argv) != 2:
         exit("bad input")
     return sys.argv[1]
+
 
 def tokenizer(expressions):
     equation = []
@@ -41,6 +45,7 @@ def tokenizer(expressions):
         equation.append(tokens)
     return equation
 
+
 def negative_exponent_handler(exprs):
     i = 0
     for expr in exprs:
@@ -48,15 +53,17 @@ def negative_exponent_handler(exprs):
             if expr[j][0] == '-' and expr[j][1:].isdigit():
                 if j > 0:
                     expr[j - 1] += expr[j]
-        expr = [elm for elm in expr if not (elm[0] == '-' and elm[1:].isdigit())]
+        expr = [elm for elm in expr if not (
+            elm[0] == '-' and elm[1:].isdigit())]
         exprs[i] = expr
         i += 1
     return exprs
 
+
 def coeff_expo_parser(expressions):
     exprs = tokenizer(expressions)
     exprs = negative_exponent_handler(exprs)
-    equation = [[],[]]
+    equation = [[], []]
     i = 0
     for expr in exprs:
         for token in expr:
@@ -70,12 +77,14 @@ def coeff_expo_parser(expressions):
         i = i + 1
     return equation
 
+
 def is_coeff(coeff):
     try:
         coeff = float(coeff)
     except:
         exit('coefficient not properly formated')
     return coeff
+
 
 def is_exponent(expo):
     unk = ['X^']
@@ -84,12 +93,12 @@ def is_exponent(expo):
     expo = int(expo[2:])
     return expo
 
+
 def semantic_analyser(equation):
     for expression in equation:
         for elm in expression:
             elm['coeff'] = is_coeff(elm['coeff'])
             elm['expo'] = is_exponent(elm['expo'])
-
 
 
 def parser():

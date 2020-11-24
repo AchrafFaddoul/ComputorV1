@@ -1,5 +1,6 @@
 from tools import gcd, find_gcd
 
+
 def equation_simplifier(equation):
     i = 0
     for elm in equation[1]:
