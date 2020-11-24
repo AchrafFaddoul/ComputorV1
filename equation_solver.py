@@ -67,7 +67,19 @@ def linear_polynomial_solver(equation):
     return True
 
 
-def quadratic_polynomial_solver(eq)
+# def complex_solution_formator(delta_sqrt, re, im):
+  #  solution = 0
+  #  True
+  #  return solution
+
+
+def quadratic_polynomial_solver(solution_data):
+    if solution_data['delta'] > 0:
+        delta_sqrt = solution_data['delta'] ** 0.5
+        x1 = (- solution_data['b'] + delta_sqrt) / (2 * solution_data['a'])
+        x2 = (- solution_data['b'] - delta_sqrt) / (2 * solution_data['a'])
+        solution = {'delta': 1, 'x1': str(x1), 'x2': str(x2)}
+        return solution
 
 
 def equation_solver(equation):
@@ -89,4 +101,5 @@ def equation_solver(equation):
         if not linear_polynomial_solver(equation):
             exit('something went wrong during solution calculation')
         exit(0)
-    discriminant_calculator(equation)
+    solution_data = discriminant_calculator(equation)
+    quadratic_polynomial_solver(solution_data)
