@@ -68,9 +68,9 @@ def linear_polynomial_solver(equation):
 
 
 # def complex_solution_formator(delta_sqrt, re, im):
-  #  solution = 0
-  #  True
-  #  return solution
+    #solution = 0
+    # True
+    # return solution
 
 
 def quadratic_polynomial_solver(solution_data):
@@ -79,6 +79,10 @@ def quadratic_polynomial_solver(solution_data):
         x1 = (- solution_data['b'] + delta_sqrt) / (2 * solution_data['a'])
         x2 = (- solution_data['b'] - delta_sqrt) / (2 * solution_data['a'])
         solution = {'delta': 1, 'x1': str(x1), 'x2': str(x2)}
+        return solution
+    elif not solution_data['delta']:
+        x = (- solution_data['b']) / (2 * solution_data['a'])
+        solution = {'delta': 0, 'x': str(x)}
         return solution
 
 
