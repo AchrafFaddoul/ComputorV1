@@ -89,7 +89,7 @@ def quadratic_polynomial_solver(solution_data):
     elif not solution_data['delta']:
         x = (- solution_data['b']) / (2 * solution_data['a'])
         solution = {'delta': 0, 'x': str(x)}
-        solution = 'Discriminant is null, the only solution is: {}'.format(
+        solution = 'Discriminant equal zero, the only solution is:\n{}'.format(
             solution['x'])
         return solution
     else:
@@ -113,7 +113,6 @@ def equation_solver(equation):
     print(reduced_polynomial)
     print('Polynomial degree: {}'.format(deg))
     if equation[-1]['expo'] < 0:
-        print(equation[-1])
         exit('The polynomial degree is stricly smaller than 0, I can\'t solve it')
     elif equation[0]['expo'] > 2:
         exit('The polynomial degree is stricly greater than 2, I can\'t solve it')

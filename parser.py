@@ -104,12 +104,10 @@ def semantic_analyser(equation):
 def parser():
     equation = get_input()
     expressions = split_polynomial(equation)
-    if not expressions:
+    if not expressions or not scanner(expressions):
         exit("this expression isn't an equation")
-    if not scanner(expressions):
-        exit("1 this expression isn't an equation")
     equation = coeff_expo_parser(expressions)
     if not equation:
-        exit("2 this expression isn't an equation")
+        exit("this expression isn't an equation")
     semantic_analyser(equation)
     return equation
