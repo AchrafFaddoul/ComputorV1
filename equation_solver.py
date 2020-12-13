@@ -83,16 +83,22 @@ def quadratic_polynomial_solver(solution_data):
         x2 = (- solution_data['b'] - delta_sqrt) / (2 * solution_data['a'])
         solution = {'delta': 1, 'x1': str(
             round(x1, 6)), 'x2': str(round(x2, 6))}
+        solution = 'Discriminant is strictly positive, the two solutions are:\n{}\n{}'.format(
+            solution['x1'], solution['x2'])
         return solution
     elif not solution_data['delta']:
         x = (- solution_data['b']) / (2 * solution_data['a'])
         solution = {'delta': 0, 'x': str(x)}
+        solution = 'Discriminant is null, the only solution is: {}'.format(
+            solution['x'])
         return solution
     else:
         delta_sqrt = (-1 * solution_data['delta']) ** 0.5
         re = - solution_data['b'] / (2 * solution_data['a'])
         im = delta_sqrt / (2 * solution_data['a'])
         solution = complex_solution_formator(delta_sqrt, re, im)
+        solution = 'Discriminant is strictly negative, the two solutions are:\n{}\n{}'.format(
+            solution['x1'], solution['x2'])
     return solution
 
 
