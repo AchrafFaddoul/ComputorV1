@@ -119,8 +119,11 @@ def equation_solver(equation):
     if deg == 1:
         if not linear_polynomial_solver(equation):
             exit('something went wrong during solution calculation')
-        exit(0)
+        return (equation)
     solution_data = discriminant_calculator(equation)
     solution = quadratic_polynomial_solver(solution_data)
     print(solution)
-    return equation
+    if deg == 2:
+        return equation
+    else:
+        return None
