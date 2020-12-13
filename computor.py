@@ -7,7 +7,7 @@ def main():
 
     equation = parser()
     equation = equation_simplifier(equation)
-    equation_solver(equation)
+    return equation_solver(equation)
 
 
 if __name__ == "__main__":

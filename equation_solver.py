@@ -123,3 +123,4 @@ def equation_solver(equation):
     solution_data = discriminant_calculator(equation)
     solution = quadratic_polynomial_solver(solution_data)
     print(solution)
+    return equation
