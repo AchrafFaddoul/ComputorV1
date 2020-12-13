@@ -107,7 +107,7 @@ def equation_solver(equation):
     if deg == 0:
         null_deg_msg = 'Polynomial degree: 0'
         msg = 'all real numbers are a solution' if (
-            not len(equation) or equation[0]['coeff'] == 0) else 'equation unsolvable'
+            not len(equation) or equation[0]['coeff'] == 0) else 'there is no solution for this equation'
         exit('{}\n{}'.format(null_deg_msg, msg))
     reduced_polynomial = reduced_form_generator(equation)
     print(reduced_polynomial)
