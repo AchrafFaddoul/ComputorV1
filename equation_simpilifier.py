@@ -24,4 +24,7 @@ def equation_simplifier(equation):
     if len(equation) == 2:
         equation.pop(1)
         equation = equation[0]
+    if len(equation):
+        for elm in equation:
+            elm['coeff'] = round(elm['coeff'], 6)
     return equation
