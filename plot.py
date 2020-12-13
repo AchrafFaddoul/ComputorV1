@@ -10,5 +10,5 @@ def get_input_plot():
     return sys.argv[1]
 
 
-def plot_quadratic_pol:
+def plot_quadratic_pol():
     True
