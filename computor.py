@@ -4,7 +4,6 @@ from equation_solver import equation_solver, deg_extractor
 
 
 def main():
-
     equation = parser()
     equation = equation_simplifier(equation)
     return equation_solver(equation)
