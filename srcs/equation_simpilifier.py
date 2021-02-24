@@ -1,4 +1,4 @@
-from tools import gcd, find_gcd
+from tools import find_gcd
 
 
 def equation_simplifier(equation):
@@ -11,7 +11,8 @@ def equation_simplifier(equation):
     equation[0] = [elm for elm in equation[0] if elm['coeff']]
     for i in equation[0]:
         for j in equation[0]:
-            if j['expo'] == i['expo'] and equation[0].index(i) != equation[0].index(j):
+            if j['expo'] == i['expo'] and equation[0].index(
+                    i) != equation[0].index(j):
                 i['coeff'] += j['coeff']
                 if len(equation[0]) > 0:
                     equation[0].pop(equation[0].index(j))

@@ -1,5 +1,4 @@
 import sys
-from tools import find_gcd
 
 
 def is_equation(expressions):
@@ -20,7 +19,9 @@ def scanner(expressions):
 
 def split_polynomial(equation):
     expressions = equation.replace(" ", "").split(sep='=')
-    if len(expressions) != 2 or len(expressions[0]) == 0 or len(expressions[1]) == 0:
+    if len(expressions) != 2 or len(
+            expressions[0]) == 0 or len(
+            expressions[1]) == 0:
         return False
     return expressions
 
@@ -41,7 +42,7 @@ def tokenizer(expressions):
                 if len(expression[j:i]):
                     tokens.append(expression[j:i])
                 j = i
-        tokens.append(expression[j:i+1])
+        tokens.append(expression[j:i + 1])
         equation.append(tokens)
     return equation
 
@@ -81,7 +82,7 @@ def coeff_expo_parser(expressions):
 def is_coeff(coeff):
     try:
         coeff = float(coeff)
-    except:
+    except BaseException:
         exit('coefficient not properly formated')
     return coeff
 

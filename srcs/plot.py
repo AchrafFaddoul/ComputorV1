@@ -1,4 +1,5 @@
-from parser import split_polynomial, scanner, coeff_expo_parser, semantic_analyser
+from parser import split_polynomial, scanner, \
+    coeff_expo_parser, semantic_analyser
 from equation_simpilifier import equation_simplifier
 from equation_solver import equation_solver
 import sys

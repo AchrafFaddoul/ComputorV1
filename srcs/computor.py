@@ -1,6 +1,6 @@
 from parser import parser
 from equation_simpilifier import equation_simplifier
-from equation_solver import equation_solver, deg_extractor
+from equation_solver import equation_solver
 
 
 def main():
