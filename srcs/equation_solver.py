@@ -44,7 +44,8 @@ def discriminant_calculator(equation):
     for elm in equation:
         delta_coeffs[i] = elm['coeff']
         i += 1
-    delta = delta_coeffs[1] ** 2 - (4 * delta_coeffs[0] * delta_coeffs[2])
+    delta = delta_coeffs[1] * delta_coeffs[1] - \
+        (4 * delta_coeffs[0] * delta_coeffs[2])
     solution_data = {'a': delta_coeffs[0], 'b': delta_coeffs[1],
                      'c': delta_coeffs[2], 'delta': delta}
     return solution_data
