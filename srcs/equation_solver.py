@@ -1,3 +1,6 @@
+from tools import sqrt
+
+
 def deg_extractor(equation):
     if not len(equation):
         return 0
@@ -79,7 +82,7 @@ def complex_solution_formator(delta_sqrt, re, im):
 
 def quadratic_polynomial_solver(solution_data):
     if solution_data['delta'] > 0:
-        delta_sqrt = solution_data['delta'] ** 0.5
+        delta_sqrt = sqrt(solution_data['delta'], 100)
         x1 = (- solution_data['b'] + delta_sqrt) / (2 * solution_data['a'])
         x2 = (- solution_data['b'] - delta_sqrt) / (2 * solution_data['a'])
         solution = {'delta': 1, 'x1': str(
@@ -94,7 +97,8 @@ def quadratic_polynomial_solver(solution_data):
             solution['x'])
         return solution
     else:
-        delta_sqrt = (-1 * solution_data['delta']) ** 0.5
+        print('holla2')
+        delta_sqrt = sqrt((-1 * solution_data['delta']), 1000)
         re = - solution_data['b'] / (2 * solution_data['a'])
         im = delta_sqrt / (2 * solution_data['a'])
         solution = complex_solution_formator(delta_sqrt, re, im)

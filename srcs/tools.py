@@ -12,3 +12,10 @@ def find_gcd(list):
             return False
         res = gcd(res, elm)
     return res
+
+
+def sqrt(number, number_iters):
+    a = float(number)
+    for i in range(number_iters):
+        number = 0.5 * (number + a / number)
+    return number
