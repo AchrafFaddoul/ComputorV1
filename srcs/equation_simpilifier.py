@@ -17,6 +17,9 @@ def equation_simplifier(equation):
                 if len(equation[0]) > 0:
                     equation[0].pop(equation[0].index(j))
     coeff_lst = [elm['coeff'] for elm in equation[0]]
+    if len(coeff_lst) == 0:
+        print("can't manage this format")
+        exit()
     gcd = find_gcd(coeff_lst)
     if (gcd > 1):
         for elm in equation[0]:
