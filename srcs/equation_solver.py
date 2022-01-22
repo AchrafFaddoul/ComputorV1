@@ -97,7 +97,6 @@ def quadratic_polynomial_solver(solution_data):
             solution['x'])
         return solution
     else:
-        print('holla2')
         delta_sqrt = sqrt((-1 * solution_data['delta']), 1000)
         re = - solution_data['b'] / (2 * solution_data['a'])
         im = delta_sqrt / (2 * solution_data['a'])
